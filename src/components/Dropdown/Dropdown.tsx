@@ -67,7 +67,7 @@ export default function Dropdown({
           }}
         />
       )}
-      <div className={styles.container}>
+      <div className={`${styles.container} ${className}`}>
         {label && <div className={styles.label}>{label}</div>}
         <div
           onClick={handleContainerClick}
