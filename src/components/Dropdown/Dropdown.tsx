@@ -54,47 +54,56 @@ export default function Dropdown({
   };
 
   return (
-    <div className={styles.container}>
-      {label && <div className={styles.label}>{label}</div>}
-      <div
-        onClick={handleContainerClick}
-        className={styles.inputCont}
-        style={customInputStyle}
-      >
-        {inputIcon && <div className={styles.inputIcon}>{inputIcon}</div>}
-        <input
-          ref={inputRef}
-          onClick={handleInputClick}
-          onChange={(e) => setFilterText(e.target.value)}
-          value={getDisplayValue()}
-          className={styles.input}
+    <>
+      {isOpen && (
+        <div
+          className={styles.closingContainer}
+          onClick={() => setIsOpen(false)}
         />
-        {inputIcon && <div className={styles.inputIcon}>{unfoldIcon}</div>}
-        {isOpen && (
-          <div className={styles.unfoldedMenu}>
-            {options
-              .filter(
-                (option) =>
-                  option.value.toLowerCase().indexOf(filterText.toLowerCase()) >
-                  -1
-              )
-              .map((option) => (
-                <div
-                  key={option.key}
-                  onClick={() => {
-                    setFilterText("");
-                    handleChange(option);
-                    setIsOpen(false);
-                  }}
-                  className={styles.option}
-                >
-                  {option.value}
-                </div>
-              ))}
-          </div>
-        )}
+      )}
+      <div className={styles.container}>
+        {label && <div className={styles.label}>{label}</div>}
+        <div
+          onClick={handleContainerClick}
+          className={styles.inputCont}
+          style={customInputStyle}
+        >
+          {inputIcon && <div className={styles.inputIcon}>{inputIcon}</div>}
+          <input
+            ref={inputRef}
+            onClick={handleInputClick}
+            onChange={(e) => setFilterText(e.target.value)}
+            value={getDisplayValue()}
+            className={styles.input}
+          />
+          {inputIcon && <div className={styles.inputIcon}>{unfoldIcon}</div>}
+          {isOpen && (
+            <div className={styles.unfoldedMenu}>
+              {options
+                .filter(
+                  (option) =>
+                    option.value
+                      .toLowerCase()
+                      .indexOf(filterText.toLowerCase()) > -1
+                )
+                .map((option) => (
+                  <div
+                    key={option.key}
+                    onClick={() => {
+                      setFilterText("");
+                      handleChange(option);
+                      setIsOpen(false);
+                    }}
+                    className={styles.option}
+                  >
+                    {option.value}
+                  </div>
+                ))}
+            </div>
+          )}
+        </div>
+        {hintText && <div className={styles.hintText}>{hintText}</div>}
       </div>
-      {hintText && <div className={styles.hintText}>{hintText}</div>}
-    </div>
+    </>
   );
 }
