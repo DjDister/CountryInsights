@@ -50,6 +50,8 @@ export default function Dropdown({
       e.stopPropagation();
     } else {
       setIsOpen(!isOpen);
+      setFilterText("");
+      getDisplayValue();
     }
   };
 
@@ -58,7 +60,11 @@ export default function Dropdown({
       {isOpen && (
         <div
           className={styles.closingContainer}
-          onClick={() => setIsOpen(false)}
+          onClick={() => {
+            setIsOpen(false);
+            setFilterText("");
+            getDisplayValue();
+          }}
         />
       )}
       <div className={styles.container}>
