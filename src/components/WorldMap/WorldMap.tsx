@@ -1,10 +1,10 @@
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { chosenCountryType } from "../../../types";
+import { ChosenCountryType } from "../../../types";
 
 export default function WorldMap({
   chosenCountries,
 }: {
-  chosenCountries: chosenCountryType[];
+  chosenCountries: ChosenCountryType[];
 }) {
   const removedOutlineStyle = {
     outline: "none",
