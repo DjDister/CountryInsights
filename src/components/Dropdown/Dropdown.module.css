@@ -1,0 +1,69 @@
+
+input{
+    all: unset;
+}
+
+.closingContainer{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left:0;
+  top:0;
+}
+
+.container{
+    display:"flex";
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.inputCont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #F5F6F7;
+    position: relative;
+}
+
+.input {
+    flex: 1;
+    z-index: 2;
+  }
+
+  .inputIcon{
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  .unfoldedMenu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #F5F6F7;
+    border-top: 1px solid #E0E0E0;
+    z-index: 1;
+    max-height: 150px;
+    overflow-y: scroll;
+  }
+
+  .option{
+    height: 30px;
+    padding: 0 8px;
+  }
+
+  .hintText{
+    font-size: 13px;
+    font-weight: 400;
+    color: #000000;
+    margin-top: 5px;
+  }
