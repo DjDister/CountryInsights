@@ -17,3 +17,20 @@
   .input{
     margin-top: 40px;
   }
+
+  button{
+    all: unset;
+  }
+
+  .button{
+    width: 100px;
+    height: 45px;
+    background-color: #8FDE5D;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
