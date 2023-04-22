@@ -6,12 +6,21 @@ import WorldMap from "./components/WorldMap/WorldMap";
 import { ChosenCountryType } from "../types";
 import continents from "./const/continents";
 import styles from "./App.module.css";
+import isInputValueValid from "./utils/isInputValueValid";
+import Input from "./components/Input/Input";
 
 function App() {
   const [value, setValue] = useState(continents[0]);
   const [chosenCountries, setChosenCountries] = useState<ChosenCountryType[]>(
     []
   );
+  const [numberOfCountries, setNumberOfCountries] = useState("2");
+  const [errorInInputValue, setErrorInInputValue] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorInInputValue(!isInputValueValid(e.target.value));
+    setNumberOfCountries(e.target.value);
+  };
 
   return (
     <div className={styles.pageContainer}>
@@ -29,7 +38,18 @@ function App() {
           selectedVal={value}
           handleChange={(val) => setValue(val)}
         />
-        <input />
+        <Input
+          className={styles.input}
+          label="Number of countries to show"
+          value={numberOfCountries}
+          customInputStyle={{ width: 300, height: 40 }}
+          handleChange={handleChange}
+          underInputText={
+            errorInInputValue
+              ? "Please enter a number between 2 and 10"
+              : undefined
+          }
+        />
       </div>
     </div>
   );
