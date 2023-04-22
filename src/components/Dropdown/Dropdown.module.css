@@ -1,0 +1,42 @@
+
+input{
+    all: unset;
+}
+
+.container{
+    display:"flex";
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.inputCont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #F5F6F7;
+}
+
+.input {
+    flex: 1;
+  }
+
+  .inputIcon{
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hintText{
+    font-size: 13px;
+    font-weight: 400;
+    color: #000000;
+    margin-top: 5px;
+  }
