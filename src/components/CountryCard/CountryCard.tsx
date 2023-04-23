@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CountryCard.module.css";
 import { CountryInfo } from "../../../types";
 import FlagIcon from "../../assets/svg/FlagIcon";

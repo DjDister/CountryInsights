@@ -26,7 +26,7 @@ function App() {
     CountryInfo[] | { name: string; id: string }[]
   >([]);
 
-  const { loading, error, data } = useQueryContinents<{
+  const { loading, data } = useQueryContinents<{
     continent: { countries: { name: string }[] };
   }>(chosenContinent.key);
 
