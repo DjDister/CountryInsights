@@ -13,6 +13,7 @@ import fetchInsightDataAboutCountries from "./utils/fetchInsightDataAboutCountri
 import CountryCard from "./components/CountryCard/CountryCard";
 import selectRandomCountries from "./utils/selectRandomCountries";
 import EmptyCountryCard from "./components/CountryCard/EmptyCountryCard";
+import sortAlphabetically from "./utils/sortAlphabetically";
 
 function App() {
   const [chosenContinent, setChosenContinent] = useState(continents[0]);
@@ -106,7 +107,10 @@ function App() {
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          countriesInsightData.map((country, index) => {
+          sortAlphabetically<CountryInfo | { name: string; id: string }>(
+            countriesInsightData,
+            "name"
+          ).map((country, index) => {
             const color =
               chosenCountries.find(
                 (chosenCountry) => chosenCountry.id === country.id
