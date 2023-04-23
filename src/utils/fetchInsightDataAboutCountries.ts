@@ -2,22 +2,24 @@ import { ChosenCountryType, CountryInfo } from "../../types";
 
 const fetchInsightDataAboutCountries = async (
   countries: ChosenCountryType[]
-): Promise<CountryInfo[] | { name: string }[]> => {
+): Promise<CountryInfo[] | { name: string; id: string }[]> => {
   const promises = countries.map((country) =>
     fetch(`https://restcountries.com/v3.1/name/${country.name}`)
       .then((response) => response.json())
       .then((data) => {
         return {
+          id: country.id,
           name: data[0].name.official,
           capital: data[0].capital[0],
           population: data[0].population,
           currency: data[0].currencies[Object.keys(data[0].currencies)[0]],
           subregion: data[0].subregion,
-          languages: Object.keys(data[0].languages)[0],
+          languages: data[0].languages[Object.keys(data[0].languages)[0]],
         };
       })
       .catch((error) => {
         return {
+          id: country.id,
           name: country.name,
         };
       })
