@@ -72,7 +72,11 @@ function App() {
             inputIcon={<GlobeIcon />}
             hintText="Select a continent"
             selectedVal={chosenContinent}
-            handleChange={(val) => setChosenContinent(val)}
+            handleChange={(val) => {
+              setChosenContinent(val);
+              setChosenCountries([]);
+              setCountriesInsightData([]);
+            }}
           />
           <Input
             className={styles.input}
