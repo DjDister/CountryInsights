@@ -28,7 +28,14 @@ export default function WorldMap({
   };
   return (
     <ComposableMap>
-      <ZoomableGroup center={[center[0], center[1]]} zoom={1.4}>
+      <ZoomableGroup
+        translateExtent={[
+          [-100, -150],
+          [900, 600],
+        ]}
+        center={[center[0], center[1]]}
+        zoom={1.4}
+      >
         <Geographies geography={"/countriesmap.json"}>
           {({ geographies }) =>
             geographies.map((geo) => {
