@@ -1,0 +1,55 @@
+.pageContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50%;
+  align-items: center;
+}
+
+.halfWidthCont{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.input{
+  margin-top: 40px;
+}
+
+button{
+  all: unset;
+}
+
+.button{
+  width: 100px;
+  height: 45px;
+
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.countriesContainer{
+  width: 95%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+
