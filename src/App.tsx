@@ -3,7 +3,7 @@ import DownArrowIcon from "./assets/svg/DownArrowIcon";
 import GlobeIcon from "./assets/svg/GlobeIcon";
 import Dropdown from "./components/Dropdown/Dropdown";
 import WorldMap from "./components/WorldMap/WorldMap";
-import { ChosenCountryType, CountryInfo } from "../types";
+import { ChosenCountryType, ContinentKeys, CountryInfo } from "../types";
 import continents from "./const/continents";
 import styles from "./App.module.css";
 import isInputValueValid from "./utils/isInputValueValid";
@@ -15,7 +15,7 @@ import selectRandomCountries from "./utils/selectRandomCountries";
 import EmptyCountryCard from "./components/CountryCard/EmptyCountryCard";
 
 function App() {
-  const [value, setValue] = useState(continents[0]);
+  const [chosenContinent, setChosenContinent] = useState(continents[0]);
   const [chosenCountries, setChosenCountries] = useState<ChosenCountryType[]>(
     []
   );
@@ -27,7 +27,7 @@ function App() {
 
   const { loading, error, data } = useQueryContinents<{
     continent: { countries: { name: string }[] };
-  }>(value.key);
+  }>(chosenContinent.key);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setErrorInInputValue(!isInputValueValid(e.target.value));
@@ -49,7 +49,6 @@ function App() {
       setIsLoading(true);
       const countries = await fetchInsightDataAboutCountries(chosenCountries);
       setCountriesInsightData(countries);
-      console.log(countries);
       setIsLoading(false);
     };
     fetchData();
@@ -59,7 +58,10 @@ function App() {
     <div className={styles.pageContainer}>
       <div className={styles.flexRow}>
         <div className={styles.halfWidthCont}>
-          <WorldMap chosenCountries={chosenCountries} />
+          <WorldMap
+            chosenCountries={chosenCountries}
+            continent={chosenContinent.key.toLocaleLowerCase() as ContinentKeys}
+          />
         </div>
         <div className={styles.halfWidthCont}>
           <Dropdown
@@ -69,8 +71,8 @@ function App() {
             unfoldIcon={<DownArrowIcon />}
             inputIcon={<GlobeIcon />}
             hintText="Select a continent"
-            selectedVal={value}
-            handleChange={(val) => setValue(val)}
+            selectedVal={chosenContinent}
+            handleChange={(val) => setChosenContinent(val)}
           />
           <Input
             className={styles.input}

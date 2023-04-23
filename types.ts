@@ -18,3 +18,5 @@ export type CountryInfo = {
   subregion: string;
   languages: string;
 };
+
+export type ContinentKeys = "af" | "as" | "eu" | "na" | "oc" | "sa";
