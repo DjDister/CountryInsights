@@ -17,7 +17,7 @@ const fetchInsightDataAboutCountries = async (
           languages: data[0].languages[Object.keys(data[0].languages)[0]],
         };
       })
-      .catch((error) => {
+      .catch(() => {
         return {
           id: country.id,
           name: country.name,

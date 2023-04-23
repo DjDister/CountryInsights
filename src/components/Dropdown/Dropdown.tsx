@@ -81,6 +81,7 @@ export default function Dropdown({
             onChange={(e) => setFilterText(e.target.value)}
             value={getDisplayValue()}
             className={styles.input}
+            {...props}
           />
           {inputIcon && <div className={styles.inputIcon}>{unfoldIcon}</div>}
           {isOpen && (

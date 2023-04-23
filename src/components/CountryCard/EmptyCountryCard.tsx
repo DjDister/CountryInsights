@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CountryCard.module.css";
 
 interface EmptyCountryCardProps {
