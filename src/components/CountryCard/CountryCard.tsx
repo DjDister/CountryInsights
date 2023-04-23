@@ -18,23 +18,25 @@ export default function CountryCard({ color, ...props }: CountryCardProps) {
         <div className={styles.padding}>
           <div className={styles.infoContainer}>
             <FlagIcon />
-            {props.capital}
+            {props.capital || "No capital"}
           </div>
           <div className={styles.infoContainer}>
             <UsersIcon />
-            {props.population}
+            {props.population || "No population"}
           </div>
           <div className={styles.infoContainer}>
             <GlobeIcon />
-            {props.subregion}
+            {props.subregion || "No subregion"}
           </div>
           <div className={styles.infoContainer}>
             <ChatIcon />
-            {props.languages}
+            {props.languages || "No languages"}
           </div>
           <div className={styles.infoContainer}>
-            <div className={styles.flexCenter}>{props.currency.symbol}</div>
-            {props.currency.name}
+            <div className={styles.flexCenter}>
+              {props.currency.symbol || "$"}
+            </div>
+            {props.currency.name || "No currency"}
           </div>
         </div>
         <div style={{ backgroundColor: color, width: "100%", height: 10 }} />
